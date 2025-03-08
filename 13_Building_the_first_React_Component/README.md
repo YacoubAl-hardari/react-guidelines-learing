@@ -1,70 +1,104 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**متابعة بناء مشروع React وفهم طريقة عمله**  
 
-## Available Scripts
+في الدرس السابق، تعرفنا على هيكلة المشروع والمكونات الأساسية التي يحتوي عليها، كما قمنا ببعض التعديلات الأولية. في هذا الدرس، سنكمل فهم كيفية عمل React وسنبدأ بإنشاء أول **Component** خاص بنا.  
 
-In the project directory, you can run:
+### **مراجعة الكود السابق**  
+هذا هو الكود الذي وصلنا إليه في الدرس السابق، وقد أضفت إليه جزءًا جديدًا وهو عبارة عن **ترميز أكاديمي**، مما انعكس على هذا الجزء داخل المشروع. كما ذكرت سابقًا، الملف `App.js` داخل مجلد `src` يُعتبر الملف الأساسي الذي ينطلق منه المشروع، لكن ما الذي يجعله كذلك؟ وكيف يصبح هو **Root Component** الذي يحتوي على جميع المكونات الأخرى؟ لنفهم هذه النقطة بشكل بسيط.  
 
-### `npm start`
+### **كيف يبدأ تحميل المشروع في React؟**  
+عادةً، في أي مشروع ويب، يكون `index.html` هو أول ملف يتم تحميله عند تشغيل المشروع، سواء كان المشروع يعتمد على **HTML** مباشرةً أو يعمل بواسطة تقنيات مثل **Next.js**.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### **تحليل ملف `index.js`**  
+عند فتح ملف `index.js` داخل مجلد `src`، ستجد عدة استدعاءات (`import`):  
+1. استدعاء مكتبة **React** من `node_modules`.  
+2. استدعاء `react-dom`، وهي مكتبة أساسية تجعل React يعمل بشكل صحيح في المتصفح.  
+3. استدعاء ملف `App.js`، لكن لاحظ أننا لم نكتب `.js` لأنه غير مطلوب في هذه الحالة.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### **كيف يتم تحديد `App.js` كـ Root Component؟**  
+داخل `index.js`، هناك متغير باسم `root` يتم تعريفه كالتالي:  
 
-### `npm test`
+```javascript
+const root = ReactDOM.createRoot(document.getElementById('root'));
+```
+  
+هذا المتغير يستخدم مكتبة `react-dom` التي استدعيناها في البداية، وتحديدًا الدالة `createRoot()`. هذه الدالة تأخذ العنصر الذي يحتوي على `id="root"` من **ملف `index.html`** وتجعله النقطة الأساسية التي سيتم فيها عرض محتوى React.  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+بعد ذلك، يتم **Render** للـ `App` Component داخل هذا العنصر باستخدام:  
+```javascript
+root.render(<App />);
+```
+  
+بالتالي، أي محتوى داخل `App.js` سيتم إدخاله داخل العنصر `<div id="root"></div>` الموجود في `index.html`.  
 
-### `npm run build`
+### **كيف يتحول كود React إلى HTML يفهمه المتصفح؟**  
+في نهاية الأمر، React يقوم بتحويل الكود المكتوب باستخدام **JSX** إلى **HTML عادي** يمكن للمتصفح فهمه. على سبيل المثال:  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```jsx
+return <h1>ترميز أكاديمي</h1>;
+```
+  
+عند تشغيل المشروع، سيتم تحويل هذا السطر إلى:  
+```html
+<h1>ترميز أكاديمي</h1>
+```
+  
+وإدراجه داخل العنصر `<div id="root"></div>` في `index.html`. يمكنك التأكد من ذلك عبر أداة **Inspect Element** في المتصفح.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **إنشاء أول Component في React**  
+حتى الآن، استخدمنا `App.js` كمكون رئيسي، لكن React يعتمد على مبدأ **إعادة استخدام المكونات (Components)**، حيث يمكننا تقسيم المشروع إلى عدة مكونات صغيرة قابلة لإعادة الاستخدام.
 
-### `npm run eject`
+#### **إنشاء أول Component خاص بنا**
+لإنشاء Component جديد، يمكننا تعريفه كدالة داخل `App.js` كما يلي:  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```javascript
+function MyFirstComponent() {
+  return <h1>Hello, World!</h1>;
+}
+```
+  
+هذا الكود يُعرّف مكونًا بسيطًا يعرض رسالة `"Hello, World!"`. الآن، لإدراجه داخل `App.js`، يمكننا استخدامه بنفس طريقة كتابة **Tags** في HTML:  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+function App() {
+  return (
+    <div>
+      <MyFirstComponent />
+    </div>
+  );
+}
+```
+  
+### **فصل المكون في ملف مستقل**  
+بدلًا من تعريف `MyFirstComponent` داخل `App.js`، من الأفضل نقله إلى ملف منفصل داخل مجلد `components/`، على سبيل المثال `MyFirstComponent.js`:  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```javascript
+function MyFirstComponent() {
+  return <h1>Hello, World!</h1>;
+}
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+export default MyFirstComponent;
+```
+  
+ثم نقوم باستدعائه في `App.js` كالتالي:  
 
-## Learn More
+```javascript
+import MyFirstComponent from "./components/MyFirstComponent";
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+function App() {
+  return (
+    <div>
+      <MyFirstComponent />
+    </div>
+  );
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+export default App;
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### **ما التالي؟**  
+بهذه الطريقة، أنشأنا أول مكون في React، وفهمنا كيف يتم تحميل المشروع وتشغيله داخل المتصفح. في الدرس القادم، سنشرح بشكل أكثر تفصيلًا كيف يتم بناء المشروع باستخدام **عدة مكونات**، وكيفية التفاعل بينها.  
