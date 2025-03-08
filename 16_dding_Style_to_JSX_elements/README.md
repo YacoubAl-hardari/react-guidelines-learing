@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+### 📝 **الدرس التاسع: إضافة الأنماط في JSX**  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+في هذا الدرس، تم التعمق في كيفية **إضافة الأنماط (Styles) في JSX** عند بناء المكونات (Components) في React.  
 
-In the project directory, you can run:
+#### 🔹 **الفرق بين HTML و JSX في التعامل مع الأنماط**  
+- في **HTML**، يتم استخدام `style` كـ **attribute** داخل العنصر، وتتم كتابة القيم كسلسلة نصية (String) مباشرةً:  
+  ```html
+  <h1 style="background-color: orange;">Hello World</h1>
+  ```
+- في **JSX**، يتم استخدام **كائن (Object) JavaScript** لتمثيل الأنماط، ويتم تمريره داخل `{}` كقيمة لـ `style`:  
+  ```jsx
+  <h1 style={{ backgroundColor: "orange" }}>Hello World</h1>
+  ```
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 🔹 **الطريقة الصحيحة لتنسيق العناصر في JSX**  
+1️⃣ **إنشاء كائن (Object) للأنماط وتخزينه في متغير**  
+   - يتم تعريف كائن يحتوي على خصائص CSS ولكن بأسلوب camelCase بدلًا من **kebab-case**.  
+   ```jsx
+   const style = {
+       backgroundColor: "yellow",
+       color: "blue",
+       fontSize: "24px",
+       padding: "10px"
+   };
+   ```
+   - يتم استدعاء هذا المتغير داخل `style={}` عند تطبيق النمط على العنصر:
+   ```jsx
+   <h1 style={style}>Hello, my first React component!</h1>
+   ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+2️⃣ **تمرير كائن الأنماط مباشرة داخل JSX**  
+   - يمكن تعريف الأنماط مباشرة داخل `style={{}}` بدلًا من تخزينها في متغير مسبقًا.  
+   ```jsx
+   <p style={{ color: "green" }}>This is a simple example of a React component.</p>
+   ```
 
-### `npm test`
+3️⃣ **استخدام المتغيرات لتوحيد الأنماط**  
+   - يمكن استخدام **متغير واحد** لإعادة استخدام نفس النمط لعناصر متعددة.  
+   ```jsx
+   const buttonStyle = {
+       backgroundColor: "green",
+       color: "white",
+       fontSize: "24px",
+       padding: "10px",
+       borderRadius: "5px",
+       cursor: "pointer"
+   };
+   ```
+   - ثم تطبيق النمط على **زر Button** بنفس الطريقة:
+   ```jsx
+   <button style={buttonStyle} onClick={() => alert("Button Clicked")}>Click Me</button>
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### 🎯 **نقاط مهمة في JSX والأنماط**  
+✔ **خاصية `style` في JSX تأخذ كائن JavaScript وليس سلسلة نصية.**  
+✔ **يتم استخدام camelCase لكتابة خصائص CSS داخل الكائن.**  
+✔ **يمكن تعريف كائن أنماط خارجي وإعادة استخدامه لتجنب تكرار الأكواد.**  
+✔ **يتم تمرير الدوال إلى `onClick` بدون استدعائها (أي بدون `()` في JSX).**  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ✅ **كود التطبيق العملي**  
+```jsx
+export default function SayHelloFromMyFirstComponent() {
+    const style = {
+        backgroundColor: "yellow",
+        color: "blue",
+        fontSize: "24px",
+        padding: "10px"
+    };
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    const buttonStyle = {
+        backgroundColor: "green",
+        color: "white",
+        fontSize: "24px",
+        padding: "10px",
+        borderRadius: "5px",
+        cursor: "pointer"
+    };
 
-### `npm run eject`
+    return (
+        <>
+            <h1 style={style}>Hello, my first React component!</h1>
+            <p style={{ color: "green" }}>This is a simple example of a React component.</p>
+            <button style={buttonStyle} onClick={() => alert("Button Clicked")}>Click Me</button>
+        </>
+    );
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+🎉 **الآن أصبح لديك فهم واضح لكيفية تطبيق الأنماط داخل JSX في React!** 🚀
