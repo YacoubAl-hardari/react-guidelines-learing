@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# الدرس الثامن من سلسلة دروس React JS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## مقدمة
+في الدرس السابق، تحدثنا بشكل نظري ومفصل عن **المكونات (Components)** وكيفية تقسيم الصفحة. ما زلنا في مرحلة الفهم الأساسية، والآن سننتقل إلى موضوع **JSX** في React.
 
-## Available Scripts
+## ما هو JSX؟
+**JSX** هو اختصار لـ **JavaScript XML**، وهو عبارة عن **دمج بين HTML و JavaScript**. عند كتابة كود **JSX**، فأنت عمليًا تكتب كود JavaScript بداخله HTML، ثم يتم تحويله إلى كود HTML النهائي الذي يراه المتصفح.
 
-In the project directory, you can run:
+## قواعد أساسية في JSX
+### 1. يجب إغلاق جميع التاجات
+في HTML العادي، يمكن أحيانًا فتح عنصر بدون إغلاقه، مثل:
+```html
+<img src="image.jpg">
+```
+لكن في **JSX**، يجب دائمًا إغلاق جميع التاجات:
+```jsx
+<img src="image.jpg" />
+```
+إذا لم تفعل ذلك، ستحصل على خطأ **Syntax Error**.
 
-### `npm start`
+### 2. يجب أن تحتوي `return` على عنصر واحد فقط
+في **React**، عند استخدام `return` في **المكونات (Components)**، يجب أن يعود بعنصر واحد فقط. على سبيل المثال، الكود التالي سيؤدي إلى خطأ:
+```jsx
+return (
+    <div>Hello</div>
+    <div>World</div>
+);
+```
+الحل هو وضع جميع العناصر داخل **عنصر واحد مغلف**، مثل `div`:
+```jsx
+return (
+    <div>
+        <div>Hello</div>
+        <div>World</div>
+    </div>
+);
+```
+أو يمكنك استخدام **Fragment** بدلاً من `div`:
+```jsx
+return (
+    <>
+        <div>Hello</div>
+        <div>World</div>
+    </>
+);
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 3. استخدام JavaScript داخل JSX
+يمكنك استخدام **JavaScript expressions** داخل JSX عن طريق `{}`:
+```jsx
+const name = "Ahmed";
+return <h1>Hello, {name}!</h1>;
+```
+أي كود JavaScript داخل `{}` سيتم تفسيره ككود JavaScript.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### العمليات الحسابية داخل JSX
+```jsx
+const x = 10;
+const y = 5;
+return <h1>Sum: {x + y}</h1>;
+```
 
-### `npm test`
+#### استدعاء دوال داخل JSX
+```jsx
+function sayHello() {
+    return "Hello World!";
+}
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+return <h1>{sayHello()}</h1>;
+```
 
-### `npm run build`
+#### استخدام الكائنات (Objects) داخل JSX
+```jsx
+const person = {
+    name: "Yarab",
+    email: "yarab@gmail.com"
+};
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+return <h1>{person.name}</h1>;
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## خلاصة
+- **JSX** هو طريقة لكتابة HTML داخل JavaScript.
+- يجب **إغلاق جميع التاجات** في JSX.
+- يجب أن يحتوي `return` على **عنصر واحد فقط**.
+- يمكنك استخدام **JavaScript expressions** داخل `{}`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+بهذا الشكل، تكون لديك قاعدة قوية لفهم **JSX** واستخدامه في React! 🚀
