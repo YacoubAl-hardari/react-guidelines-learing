@@ -1,0 +1,83 @@
+/* تعيين الخط الأساسي وتنسيق الصفحة */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* تصميم الحاوية الرئيسية */
+.app {
+  max-width: 900px;
+  margin: 20px auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* تصميم الهيدر */
+header {
+  background: #007bff;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* تنسيق المحتوى */
+.content {
+  display: flex;
+  padding: 20px;
+}
+
+/* تصميم القائمة الجانبية */
+aside {
+  width: 250px;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* تنسيق المنشورات */
+main {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.post {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.post p {
+  color: #555;
+}
+
+/* تصميم مكون البروفايل */
+.profile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.profile h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #007bff;
+}
