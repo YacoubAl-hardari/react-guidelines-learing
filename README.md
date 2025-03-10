@@ -3,32 +3,36 @@
 ## محتويات الدليل:
 
 ### 1. تجربة React لأول مرة
-**المجلد:** `10_Trying_React_JS.txt`
+**المجلد:** `01_Trying_React_JS.md`
 
 يحتوي على مقدمة حول React، كيفية استخدامها، وما يمكن القيام به باستخدامها.
 
 ### 2. إنشاء مشروع React جديد
-**المجلد:** `11_Creating_a_New_React_Project`
+**المجلد:** `02_Creating_a_New_React_Project`
 
 يشرح كيفية إنشاء مشروع React جديد باستخدام `create-react-app`، وإعداد الملفات الأساسية مثل `package.json` و`index.js`.
 
 ### 3. بناء أول مكون React
-**المجلد:** `13_Building_the_first_React_Component`
+**المجلد:** `03_Building_the_first_React_Component`
 
 يتناول كيفية إنشاء أول مكون React باستخدام JSX، وتمييزه عن HTML العادي.
 
 ### 4. المكونات في تطبيقات الويب (نظري)
-**المجلد:** `14_Components_In_Web_App_(Theoretical)`
+**المجلد:** `04_Components_In_Web_App_(Theoretical)`
 
 يوضح المفاهيم الأساسية حول المكونات في React، مثل المكونات الوظيفية والكلاسيكية، وإعادة استخدام المكونات.
 
 ### 5. مقدمة إلى JSX
-**المجلد:** `15_Intro_to_JSX`
+**المجلد:** `05Intro_to_JSX`
 
 يتناول أساسيات JSX، وكيف يساعد في كتابة كود React بشكل أكثر كفاءة ووضوحًا.
 
 ### 6. إضافة أنماط إلى عناصر JSX
-**المجلد:** `16_dding_Style_to_JSX_elements`
+**المجلد:** `06_dding_Style_to_JSX_elements`
+
+
+### 6. إضأنماط إلى عناصر JSX
+**المجلد:** `07_Adding_Classes_to_JSX _elements`
 
 يشرح كيفية تطبيق الأنماط على المكونات في React باستخدام CSS، والمصفوفات، والكائنات.
 
