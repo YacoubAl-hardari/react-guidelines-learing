@@ -1,0 +1,153 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr; 
+  grid-template-rows: auto 1fr; 
+  grid-template-areas:
+      "header header"
+      "sidebar main";
+  height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  padding: 20px;
+  background-color: #333;
+  color: white;
+  grid-area: sidebar; 
+}
+
+.sidebar h2 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  color: #ddd;
+}
+
+header {
+  background-color: #444;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  grid-area: header; 
+}
+
+.main-content {
+  grid-area: main; 
+  padding: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.btn.red {
+  background-color: red;
+  color: white;
+}
+
+.btn.green {
+  background-color: green;
+  color: white;
+}
+.btn.blue {
+  background-color: blue;
+  color: white;
+}
+.btn.white {
+  background-color:blanchedalmond;
+  color: white;
+}
+.btn.gray {
+  background-color: gray;
+  color: white;
+}
+.btn.darksalmon {
+  background-color:darksalmon;
+  color: white;
+}
+.btn.darkolivegreen {
+  background-color:darkolivegreen;
+  color: white;
+}
+
+.btn.large {
+  font-size: 20px;
+}
+
+.btn.small {
+  font-size: 12px;
+}
+
+.post-title.red {
+  color: red;
+}
+
+.post-title.blue {
+  color: blue;
+}
+.post-title.greenyellow {
+  color:greenyellow;
+}
+
+.post-title.green {
+  color: green;
+}
+
+.post {
+  margin-bottom: 20px;
+}
+
+hr {
+  margin-top: 10px;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.btn-hover:hover
+{
+  background-color: #745ae8  !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+}
